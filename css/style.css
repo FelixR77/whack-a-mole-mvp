@@ -1,0 +1,59 @@
+body {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 2fr;
+    
+}
+
+#header-container {
+    grid-column: span 2;
+}
+
+h1 {
+    text-align: center;
+    color: brown;
+    background-color: burlywood;
+}
+#scorecard-container {
+    background: lightgray;
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+}
+
+.instructions {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border: 4px ridge black;
+    margin-left: 5%;
+    margin-right: 5%;
+    
+}
+
+.start-button {
+    margin-top: 30px;
+    width: 65px;
+    height: 45px;
+    background-color: green;
+    color: white;
+    margin-left: 40%;
+}
+
+.scorecard {
+    border: 4px ridge black;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+main {
+    display: flex;
+    background-color: burlywood;
+}
+
+
+

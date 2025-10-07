@@ -12,11 +12,6 @@
         <h1><strong>Whack-a-Mole!</strong></h1>
     </header>
     <aside id="scorecard-container">
-        <section class="scorecard">
-
-        </section>
-    </aside>
-    <main>
         <section class="instructions">
             <p>Welcome to Whack-a-Mole! Here are the rules of the game:
                 <ul>
@@ -27,10 +22,20 @@
                     <li>If your lives are gone before the timer is up the game will end</li>
                     <li>Each time you hit a mole, you get 15 points</li>
                 </ul>
-                <button>Start!</button>
+                <button class="start-button">Start!</button>
             </p>
         </section>
-        <section id="game-container"></section>
+        <section class="scorecard">
+            <div class="score"></div>
+                <p>This is where the score will be kept</p>
+            <div class="timer"></div>
+                <p>This is where the timer will be</p>
+        </section>
+    </aside>
+    <main>
+        <section id="game-container">
+            <p>This is where the game will be played</p>
+        </section>
     </main>
 </body>
 </html>
