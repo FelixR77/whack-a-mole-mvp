@@ -16,21 +16,19 @@
             <p>Welcome to Whack-a-Mole! Here are the rules of the game:
                 <ul>
                     <li>When the moles pop up click them as fast as you can!</li>
-                    <li>Rounds will last one minute and thirty seconds (1:30)</li>
-                    <li>Each round you have 3 lives</li>
-                    <li>When you miss, you lose a life and 10 points</li>
-                    <li>If your lives are gone before the timer is up the game will end</li>
+                    <li>Rounds will last one minute</li>
+                    <li>When you miss, you lose 10 points</li>
                     <li>Each time you hit a mole, you get 15 points</li>
                 </ul>
-                <button class="start-button">Start!</button>
+                <button class="start-button">Start</button>
             </p>
         </section>
         <section class="scorecard">
             <div class="score">
-                <p><strong>SCORE: </strong></p>
+                <div><strong>SCORE: </strong><span id="score-tracker">0</span></div>
             </div>
             <div class="timer">
-                <p><strong>TIME: </strong></p>
+                <div><strong>TIME: </strong><span id="timer-tracker">60</div>
             </div>
         </section>
     </aside>
