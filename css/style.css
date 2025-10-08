@@ -2,16 +2,13 @@ body {
     display: grid;
     margin: 0;
     padding: 0;
-    min-height: 50vh;
     grid-template-areas:
     "header header header"
     "aside aside aside"
     "main main main";
-    
 }
 
 #header-container {
-
     grid-area: header;
 }
 
@@ -49,25 +46,37 @@ h1 {
 }
 
 .scorecard {
-    border: 4px ridge black;
     width: 300px;
     height: 100px;
     padding: 20px;
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 10%;
+}
 
+.score, .timer {
+    border: 4px ridge black;
+    margin: 20px;
+    padding: 10px;
 }
 
 #game-container {
-    display: grid;
     grid-area: main;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: burlywood;
     border: 25px ridge lightskyblue;
     height: 600px;
-   
-
+    gap: 20px;
 }
+
+.hole {
+    display: grid;
+    border-radius: 30px;
+    margin: 10px;
+    
+}
+
 
 
     
