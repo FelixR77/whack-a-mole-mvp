@@ -14,23 +14,43 @@ timer.textContent = formatTime(timeLeft);
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds}`
+    return `${minutes}:${remainingSeconds}`;
+    
 }
 //  Learn more about how this function works ^^
 
-
+let isPlaying = false;
 
 
 startButton.addEventListener('click', () => {
+    if (isPlaying) return;
+    isPlaying = true;
+    startButton.disabled = true;
     const countDown = setInterval(() => {
     timeLeft = timeLeft - 1;
     timer.textContent = formatTime(timeLeft);
-    while (timeLeft>0 )
     if (timeLeft <= 0) {
         clearInterval(countDown);
+        startButton.disabled = false;
+        isPlaying = false;
+        timeLeft = 90;
+        timer.textContent = formatTime(timeLeft);
     }
 }, 1000); 
 })
+//  Learn more about how this function works ^^
+
+const randomIndex1 = Math.floor(Math.random() * allButtons.length);
+                    if (allButtons.data)
+
+
+const randomIndex2 = Math.floor(Math.random() * allButtons.length);
+const randomIndex3 = Math.floor(Math.random() * allButtons.length);
+
+const chosenHole1 = allButtons[randomIndex1]
+const chosenHole2 = allButtons[randomIndex2]
+const chosenHole3 = allButtons[randomIndex3]
+
 
 
 
