@@ -5,11 +5,16 @@ const allButtons = document.querySelectorAll('.hole');
 const startButton = document.querySelector(".start-button");
 
 const timer = document.querySelector('#time-tracker');
-let timeLeft = 90;
+
+let timeLeft = 60;
+
+let currentScore = 0;
 
 let isPlaying = false;
+
 const holeArray = Array.from(allButtons);
  
+score.textContent = currentScore
 
 timer.textContent = formatTime(timeLeft); 
 // .textContent updates what is shown in HTML
@@ -18,11 +23,27 @@ timer.textContent = formatTime(timeLeft);
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
+    if (remainingSeconds <=9) {
+        return `${minutes}:0${remainingSeconds}`;
+    } 
     return `${minutes}:${remainingSeconds}`;
 }
 //  Learn more about how this function works ^^
 
+allButtons.forEach(hole => {
+    hole.addEventListener('click', () => {
+        if (!isPlaying) return;
 
+        if(hole.dataset.state === 'active') {
+            currentScore = currentScore + 15;
+            hole.dataset.state = 'hit';
+        } else if (hole.dataset.state === 'idle' 
+            && hole.dataset.state === 'hit') {
+            currentScore = currentScore - 10;
+        }
+        score.textContent = currentScore;
+    });
+});
 
 function spawnMole(){
     const holeArray = Array.from(allButtons);
@@ -43,7 +64,7 @@ function spawnMole(){
     //setting that randomHole to active. So we can identify it for tracking points and in css to show
     // the mole pop up 
 
-    const moleTime = Math.random() * 3000 + 1000; 
+    const moleTime = Math.random() * 1000 + 1000; 
     // selects a random number and multiply by 4000ms (4 sec.) and add 1000ms (1 sec.)
 
     setTimeout(() => {
