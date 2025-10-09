@@ -7,6 +7,10 @@ const startButton = document.querySelector(".start-button");
 const timer = document.querySelector('#time-tracker');
 let timeLeft = 90;
 
+let isPlaying = false;
+const holeArray = Array.from(allButtons);
+ 
+
 timer.textContent = formatTime(timeLeft); 
 // .textContent updates what is shown in HTML
 
@@ -19,33 +23,8 @@ function formatTime(seconds) {
 //  Learn more about how this function works ^^
 
 
-let isPlaying = false;
-const holeArray = Array.from(allButtons);
-let spawnIntervalId = setInterval(spawnMole, 800); 
 
-startButton.addEventListener('click', () => {
-    if (isPlaying) return;
-    isPlaying = true;
-    startButton.disabled = true;
-    setInterval(spawnMole, 800);
-    const countDown = setInterval(() => {
-    timeLeft = timeLeft - 1;
-    timer.textContent = formatTime(timeLeft);
-    if (timeLeft <= 0) {
-        clearInterval(spawnIntervalId);
-        clearInterval(countDown);
-        startButton.disabled = false;
-        isPlaying = false;
-        timeLeft = 90;
-        timer.textContent = formatTime(timeLeft);
-    }
-}, 1000); 
-})
-//  Learn more about how this function works ^^
-
-
-
-function spawnMole() {
+function spawnMole(){
     const holeArray = Array.from(allButtons);
     // creates an array from all of the values in allButtons which are the ones in the class .hole
 
@@ -64,7 +43,7 @@ function spawnMole() {
     //setting that randomHole to active. So we can identify it for tracking points and in css to show
     // the mole pop up 
 
-    const moleTime = Math.random() * 4000 + 1000; 
+    const moleTime = Math.random() * 3000 + 1000; 
     // selects a random number and multiply by 4000ms (4 sec.) and add 1000ms (1 sec.)
 
     setTimeout(() => {
@@ -72,6 +51,31 @@ function spawnMole() {
     }, moleTime);
     //returns the randomHole state back to idle once the moleTime amount runs out. 
 }
+let spawnIntervalId;
+
+startButton.addEventListener('click', () => {
+    if (isPlaying) return;
+    isPlaying = true;
+    startButton.disabled = true;
+    spawnIntervalId = setInterval(spawnMole, 800);
+    const countDown = setInterval(() => {
+    timeLeft = timeLeft - 1;
+    timer.textContent = formatTime(timeLeft);
+    if (timeLeft <= 0) {
+        clearInterval(spawnIntervalId);
+        clearInterval(countDown);
+        startButton.disabled = false;
+        isPlaying = false;
+        timeLeft = 90;
+        timer.textContent = formatTime(timeLeft);
+    }
+}, 1000); 
+})
+//  Learn more about how this function works ^^
+
+
+
+
 
 
 

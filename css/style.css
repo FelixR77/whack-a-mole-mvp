@@ -62,6 +62,7 @@ h1 {
 #game-container {
     grid-area: main;
     display: grid;
+    align-items: center;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: burlywood;
@@ -73,10 +74,29 @@ h1 {
 .hole {
     display: grid;
     border-radius: 30px;
-    margin: 10px;
-    
+    margin: 0 auto;
+    width: 80%;
+    height: 170px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    border: none;
 }
 
+.hole[data-state="idle"] {
+    background-image: url('../images/idle.png');
+}
+
+.hole[data-state="active"] {
+    background-image: url('../images/Active.png');
+
+}
+
+.hole[data-state="hit"] {
+    background-image: url('../images/Hit.png');
+}
+/* review what all these settings do */
+/* study more about using [] in css to reflect JS code */
 
 
     
