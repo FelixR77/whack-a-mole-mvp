@@ -13,8 +13,13 @@ function formatTime(seconds) {
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds}`
 }
-console.log(formatTime(90))
 //  Learn more about how this function works ^^
+
+timer.textContent = formatTime(90);
+// .textContent updates what is shown in HTML
+
+
+
 
 // function gameStart {
 //     timer = 90; 
