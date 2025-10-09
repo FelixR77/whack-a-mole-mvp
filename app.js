@@ -15,21 +15,24 @@ function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds}`;
-    
 }
 //  Learn more about how this function works ^^
 
-let isPlaying = false;
 
+let isPlaying = false;
+const holeArray = Array.from(allButtons);
+let spawnIntervalId = setInterval(spawnMole, 800); 
 
 startButton.addEventListener('click', () => {
     if (isPlaying) return;
     isPlaying = true;
     startButton.disabled = true;
+    setInterval(spawnMole, 800);
     const countDown = setInterval(() => {
     timeLeft = timeLeft - 1;
     timer.textContent = formatTime(timeLeft);
     if (timeLeft <= 0) {
+        clearInterval(spawnIntervalId);
         clearInterval(countDown);
         startButton.disabled = false;
         isPlaying = false;
@@ -39,6 +42,7 @@ startButton.addEventListener('click', () => {
 }, 1000); 
 })
 //  Learn more about how this function works ^^
+
 
 
 function spawnMole() {
