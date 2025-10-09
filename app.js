@@ -25,7 +25,7 @@ startButton.addEventListener('click', () => {
     const countDown = setInterval(() => {
     timeLeft = timeLeft - 1;
     timer.textContent = formatTime(timeLeft);
-
+    while (timeLeft>0 )
     if (timeLeft <= 0) {
         clearInterval(countDown);
     }
