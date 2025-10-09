@@ -1,6 +1,6 @@
 const score = document.querySelector('#score-tracker');
 
-const allButtons = document.querySelectorAll('#game-container');
+const allButtons = document.querySelectorAll('.holes');
 
 const startButton = document.querySelector(".start-button");
 
@@ -40,17 +40,28 @@ startButton.addEventListener('click', () => {
 })
 //  Learn more about how this function works ^^
 
-const randomIndex1 = Math.floor(Math.random() * allButtons.length);
-                    if (allButtons.data)
+const holeArray = Array.from(allButtons);
+// creates an array from all html values with the class .holes 
+
+const inactiveHoles = holeArray.filter(hole => hole.dataset.state === 'idle');
+// this filters the array, and returns a list of the holes that have a state of 'idle' and adds it to
+// variable inactiveHoles
 
 
-const randomIndex2 = Math.floor(Math.random() * allButtons.length);
-const randomIndex3 = Math.floor(Math.random() * allButtons.length);
+const randomIndex = Math.floor(Math.random() * inactiveHoles.length);
+// this creates a random index number between 0 and inactiveHoles.length
 
-const chosenHole1 = allButtons[randomIndex1]
-const chosenHole2 = allButtons[randomIndex2]
-const chosenHole3 = allButtons[randomIndex3]
+const randomHole = inactiveHoles[randomIndex]; 
+// here we are 'grabing' the randomHole that was selected in line 50
 
+// now that we have the variables we can 'grab' lets put them into a spawnMole function
+
+randomHole.dataset.state = `active`; 
+
+
+// function spawnMole() {
+
+// }
 
 
 
