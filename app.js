@@ -1,12 +1,15 @@
-const startButton = document.querySelector(".start-button");
-
-const timer = document.querySelector('#time-tracker');
-
 const score = document.querySelector('#score-tracker');
 
 const allButtons = document.querySelectorAll('#game-container');
 
-let timeInSeconds = 60; 
+const startButton = document.querySelector(".start-button");
+
+const timer = document.querySelector('#time-tracker');
+let timeLeft = 90;
+
+timer.textContent = formatTime(timeLeft); 
+// .textContent updates what is shown in HTML
+
 
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
@@ -15,18 +18,29 @@ function formatTime(seconds) {
 }
 //  Learn more about how this function works ^^
 
-timer.textContent = formatTime(90);
-// .textContent updates what is shown in HTML
+
+
+
+startButton.addEventListener('click', () => {
+    const countDown = setInterval(() => {
+    timeLeft = timeLeft - 1;
+    timer.textContent = formatTime(timeLeft);
+
+    if (timeLeft <= 0) {
+        clearInterval(countDown);
+    }
+}, 1000); 
+})
 
 
 
 
-// function gameStart {
-//     timer = 90; 
-//     score = 0; 
-    
-    
-// }
 
 
-// startButton.addEventListener(click, ()) 
+
+
+
+
+
+
+
