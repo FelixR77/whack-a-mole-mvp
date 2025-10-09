@@ -1,6 +1,6 @@
 const score = document.querySelector('#score-tracker');
 
-const allButtons = document.querySelectorAll('.holes');
+const allButtons = document.querySelectorAll('.hole');
 
 const startButton = document.querySelector(".start-button");
 
@@ -40,28 +40,34 @@ startButton.addEventListener('click', () => {
 })
 //  Learn more about how this function works ^^
 
-const holeArray = Array.from(allButtons);
-// creates an array from all html values with the class .holes 
 
-const inactiveHoles = holeArray.filter(hole => hole.dataset.state === 'idle');
-// this filters the array, and returns a list of the holes that have a state of 'idle' and adds it to
-// variable inactiveHoles
+function spawnMole() {
+    const holeArray = Array.from(allButtons);
+    // creates an array from all of the values in allButtons which are the ones in the class .hole
 
+    const inactiveHoles = holeArray.filter(hole => hole.dataset.state === `idle`);
+    //goes through the array and filters the ones that have a state = idle. takes those values and 
+    //ads them to a variable: inactiveHoles
 
-const randomIndex = Math.floor(Math.random() * inactiveHoles.length);
-// this creates a random index number between 0 and inactiveHoles.length
+    const randomIndex = Math.floor(Math.random() * inactiveHoles.length);
+    //creates a random index number between 0 and inactiveHoles.length
 
-const randomHole = inactiveHoles[randomIndex]; 
-// here we are 'grabing' the randomHole that was selected in line 50
+    const randomHole = inactiveHoles[randomIndex];
+    //here we are 'grabing' the hole that was randomly selected from the inactiveHoles and adding it
+    // to a variable named randomHole. 
 
-// now that we have the variables we can 'grab' lets put them into a spawnMole function
+    randomHole.dataset.state = `active`; 
+    //setting that randomHole to active. So we can identify it for tracking points and in css to show
+    // the mole pop up 
 
-randomHole.dataset.state = `active`; 
+    const moleTime = Math.random() * 4000 + 1000; 
+    // selects a random number and multiply by 4000ms (4 sec.) and add 1000ms (1 sec.)
 
-
-// function spawnMole() {
-
-// }
+    setTimeout(() => {
+        randomHole.dataset.state = `idle`;
+    }, moleTime);
+    //returns the randomHole state back to idle once the moleTime amount runs out. 
+}
 
 
 
