@@ -37,8 +37,10 @@ allButtons.forEach(hole => {
         if(hole.dataset.state === 'active') {
             currentScore = currentScore + 15;
             hole.dataset.state = 'hit';
-        } else if (hole.dataset.state === 'idle' 
-            && hole.dataset.state === 'hit') {
+        } else if (hole.dataset.state === 'idle'){
+            currentScore = currentScore - 10;
+        }
+            else if (hole.dataset.state === 'hit') {
             currentScore = currentScore - 10;
         }
         score.textContent = currentScore;
@@ -78,6 +80,8 @@ startButton.addEventListener('click', () => {
     if (isPlaying) return;
     isPlaying = true;
     startButton.disabled = true;
+    currentScore = 0;
+    score.textContent = currentScore;
     spawnIntervalId = setInterval(spawnMole, 800);
     const countDown = setInterval(() => {
     timeLeft = timeLeft - 1;
@@ -87,7 +91,7 @@ startButton.addEventListener('click', () => {
         clearInterval(countDown);
         startButton.disabled = false;
         isPlaying = false;
-        timeLeft = 90;
+        timeLeft = 60;
         timer.textContent = formatTime(timeLeft);
     }
 }, 1000); 
